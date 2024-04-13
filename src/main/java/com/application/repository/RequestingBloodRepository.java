@@ -9,7 +9,7 @@ import com.application.model.Requesting;
 
 public interface RequestingBloodRepository extends CrudRepository<Requesting, Integer>
 {
-	public List<Requesting> findByEmail(String email);
+	public List<Requesting> findByRequestermail(String requestermail);
 	
 	@Transactional
 	@Modifying

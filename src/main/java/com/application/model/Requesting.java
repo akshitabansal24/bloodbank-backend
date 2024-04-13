@@ -11,6 +11,7 @@ public class Requesting
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	private String requestermail;
     private String name;
     private String email;
     private String bloodgroup;
@@ -20,16 +21,18 @@ public class Requesting
     private String gender;
     private int age;
     private String status;
+    private String donormail;
     
 	public Requesting()
 	{
 		super();
 	}
 
-	public Requesting(int id, String name, String email, String bloodgroup, int units, String disease, String mobile, String gender, int age, String status) 
+	public Requesting(int id, String requestermail, String name, String email, String bloodgroup, int units, String disease, String mobile, String gender, int age, String status, String donormail) 
 	{
 		super();
 		this.id = id;
+		this.requestermail = requestermail;
 		this.name = name;
 		this.email = email;
 		this.bloodgroup = bloodgroup;
@@ -39,6 +42,7 @@ public class Requesting
 		this.gender = gender;
 		this.age = age;
 		this.status = status;
+		this.donormail = donormail;
 	}
 
 	public int getId() 
@@ -138,6 +142,22 @@ public class Requesting
 	public void setStatus(String status) 
 	{
 		this.status = status;
+	}
+
+	public String getRequestermail() {
+		return requestermail;
+	}
+
+	public void setRequestermail(String requestermail) {
+		this.requestermail = requestermail;
+	}
+	
+	public String getDonormail() {
+		return donormail;
+	}
+
+	public void setDonormail(String donormail) {
+		this.donormail = donormail;
 	}
     
 }
