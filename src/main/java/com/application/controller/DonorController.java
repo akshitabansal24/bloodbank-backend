@@ -90,6 +90,15 @@ public class DonorController
 		return new ResponseEntity<List<Requesting>>(history, HttpStatus.OK);
 	}
 	
+	@GetMapping("/openRequests/{bloodgroup}")
+	@CrossOrigin(origins = "*")
+	public ResponseEntity<List<Requesting>> getRequestByBloodgroup(@PathVariable String bloodgroup) throws Exception
+	{
+		System.out.print("requesting");
+		List<Requesting> history = donorService.getRequestByBloodgroup(bloodgroup);
+		return new ResponseEntity<List<Requesting>>(history, HttpStatus.OK);
+	}
+	
 	@GetMapping("/bloodDetails")
 	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<BloodDetails>> getBloodDetails() throws Exception

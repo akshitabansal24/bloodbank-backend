@@ -11,6 +11,9 @@ public interface RequestingBloodRepository extends CrudRepository<Requesting, In
 {
 	public List<Requesting> findByRequestermail(String requestermail);
 	
+	@Query(value = "select * from requesting where bloodgroup = ?1 and status != 'accepted'",nativeQuery = true)
+	public List<Requesting> findByBloodgroup(String bloodgroup);
+	
 	@Transactional
 	@Modifying
 	@Query(value = "update requesting set status = 'accept' where email = ?1",nativeQuery = true)

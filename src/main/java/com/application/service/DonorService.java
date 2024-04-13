@@ -70,6 +70,11 @@ public class DonorService
 		return (List<Requesting>)requestingBloodRepository.findByRequestermail(email);
 	}
 	
+	public List<Requesting> getRequestByBloodgroup(String bloodgroup) 
+	{
+		return (List<Requesting>)requestingBloodRepository.findByBloodgroup(bloodgroup);
+	}
+	
 	public List<Donor> getBloodDetails()
 	{
 		return (List<Donor>)donorRepository.findBloodDetails();
