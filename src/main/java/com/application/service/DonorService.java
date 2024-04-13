@@ -67,7 +67,7 @@ public class DonorService
 	
 	public List<Requesting> getRequestHistoryByEmail(String email) 
 	{
-		return (List<Requesting>)requestingBloodRepository.findByEmail(email);
+		return (List<Requesting>)requestingBloodRepository.findByRequestermail(email);
 	}
 	
 	public List<Donor> getBloodDetails()

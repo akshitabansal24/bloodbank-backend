@@ -32,21 +32,21 @@ public class DonorController
 	private RegistrationService registrationService;
 	
 	@PostMapping("/addDonor")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public Donor addNewDonor(@RequestBody Donor donor) throws Exception
 	{
 		return donorService.saveDonor(donor);
 	}
 	
 	@PostMapping("/addAsDonor")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public Donor addUserAsDonor(@RequestBody Donor donor) throws Exception
 	{
 		return donorService.saveUserAsDonor(donor);
 	}
 	
 	@GetMapping("/acceptstatus/{email}")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<String>> updateStatus(@PathVariable String email) throws Exception
 	{
 		donorService.updateStatus(email);
@@ -56,7 +56,7 @@ public class DonorController
 	}
 	
 	@GetMapping("/rejectstatus/{email}")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<String>> rejectStatus(@PathVariable String email) throws Exception
 	{
 		donorService.rejectStatus(email);
@@ -66,7 +66,7 @@ public class DonorController
 	}
 	
 	@GetMapping("/donorlist")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<Donor>> getDonors() throws Exception
 	{
 		List<Donor> donors = donorService.getAllDonors();
@@ -74,7 +74,7 @@ public class DonorController
 	}
 	
 	@GetMapping("/requestHistory")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<Requesting>> getRequestHistory() throws Exception
 	{
 		List<Requesting> history = donorService.getRequestHistory();
@@ -82,7 +82,7 @@ public class DonorController
 	}
 	
 	@GetMapping("/requestHistory/{email}")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<Requesting>> getRequestHistoryByEmail(@PathVariable String email) throws Exception
 	{
 		System.out.print("requesting");
@@ -91,7 +91,7 @@ public class DonorController
 	}
 	
 	@GetMapping("/bloodDetails")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<BloodDetails>> getBloodDetails() throws Exception
 	{
 		List<Donor> bloodDetails = donorService.getBloodDetails();
@@ -129,7 +129,7 @@ public class DonorController
 	}
 	
 	@GetMapping("/getTotalUsers")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<Integer>> getTotalUsers() throws Exception
 	{
 		List<User> users = registrationService.getAllUsers();
@@ -139,7 +139,7 @@ public class DonorController
 	}
 	
 	@GetMapping("/getTotalDonors")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<Integer>> getTotalDonors() throws Exception
 	{
 		List<Donor> donors = donorService.getAllDonors();
@@ -152,7 +152,7 @@ public class DonorController
 	}
 	
 	@GetMapping("/getTotalBloodGroups")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<Integer>> getTotalBloodGroups() throws Exception
 	{
 		List<Donor> bloodDetails = donorService.getBloodDetails();
@@ -167,7 +167,7 @@ public class DonorController
 	}
 	
 	@GetMapping("/getTotalUnits")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<Integer>> getTotalUnits() throws Exception
 	{
 		List<Donor> bloodDetails = donorService.getBloodDetails();
@@ -182,7 +182,7 @@ public class DonorController
 	}
 	
 	@GetMapping("/getTotalRequests/{email}")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<Integer>> getTotalRequests(@PathVariable String email) throws Exception
 	{
 		List<Requesting> history = donorService.getRequestHistoryByEmail(email);
@@ -192,7 +192,7 @@ public class DonorController
 	}
 	
 	@GetMapping("/getTotalDonationCount/{email}")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<Integer>> getTotalDonationCount(@PathVariable String email) throws Exception
 	{
 		List<Donor> donors = donorService.getAllDonors();
@@ -208,7 +208,7 @@ public class DonorController
 	}
 	
 	@GetMapping("/userlist")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<User>> getUsers() throws Exception
 	{
 		List<User> users = registrationService.getAllUsers();
@@ -216,7 +216,7 @@ public class DonorController
 	}
 	
 	@GetMapping("/profileDetails/{email}")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity<List<User>> getProfileDetails(@PathVariable String email) throws Exception
 	{
 		List<User> users = registrationService.fetchProfileByEmail(email);
@@ -224,7 +224,7 @@ public class DonorController
 	}
 	
 	@PostMapping("/requestblood")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	public Requesting addNewBloodRequest(@RequestBody Requesting request) throws Exception
 	{
 		return donorService.saveBloodRequest(request);
