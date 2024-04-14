@@ -54,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	{
         http.csrf().disable().authorizeRequests().antMatchers("/authenticate")
                 .permitAll().antMatchers("/profileDetails/{email}","/login","/register","/updateuser")
-                .permitAll().antMatchers("/bloodDetails","/addDonor","/addAsDonor","/acceptstatus/{email}","/rejectstatus/{email}")
+                .permitAll().antMatchers("/bloodDetails","/addDonor","/addAsDonor","/acceptstatus/{email}/{id}","/rejectstatus/{email}")
                 .permitAll().antMatchers("/donorlist","/requestHistory","/requestHistory/{email}","/openRequests/{bloodgroup}","/bloodDetails","/getTotalUsers","/getTotalDonors")
                 .permitAll().antMatchers("/getTotalBloodGroups","/getTotalUnits","/getTotalRequests/{email}","/getTotalDonationCount/{email}","/userlist","/requestblood")
                 .permitAll().anyRequest().fullyAuthenticated()

@@ -45,11 +45,11 @@ public class DonorController
 		return donorService.saveUserAsDonor(donor);
 	}
 	
-	@GetMapping("/acceptstatus/{email}")
+	@GetMapping("/acceptstatus/{email}/{id}")
 	@CrossOrigin(origins = "*")
-	public ResponseEntity<List<String>> updateStatus(@PathVariable String email) throws Exception
+	public ResponseEntity<List<String>> updateStatus(@PathVariable String email, @PathVariable Integer id) throws Exception
 	{
-		donorService.updateStatus(email);
+		donorService.updateStatus(email, id);
 		List<String> al=new ArrayList<>();
 		al.add("accepted");
 		return new ResponseEntity<List<String>>(al,HttpStatus.OK);
@@ -90,12 +90,12 @@ public class DonorController
 		return new ResponseEntity<List<Requesting>>(history, HttpStatus.OK);
 	}
 	
-	@GetMapping("/openRequests/{bloodgroup}")
+	@GetMapping("/openRequests/{bloodgroup}/{email}")
 	@CrossOrigin(origins = "*")
-	public ResponseEntity<List<Requesting>> getRequestByBloodgroup(@PathVariable String bloodgroup) throws Exception
+	public ResponseEntity<List<Requesting>> getRequestByBloodgroup(@PathVariable String bloodgroup, @PathVariable String email) throws Exception
 	{
 		System.out.print("requesting");
-		List<Requesting> history = donorService.getRequestByBloodgroup(bloodgroup);
+		List<Requesting> history = donorService.getRequestByBloodgroup(bloodgroup, email);
 		return new ResponseEntity<List<Requesting>>(history, HttpStatus.OK);
 	}
 	

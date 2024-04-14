@@ -2,6 +2,7 @@ package com.application.service;
 
 import java.util.List;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,9 +40,9 @@ public class DonorService
 		return donorRepository.findByBloodGroup(bloodGroup);
 	}
 	
-	public void updateStatus(String email)
+	public void updateStatus(String email, Integer id)
 	{
-		requestingBloodRepository.updateStatus(email);
+		requestingBloodRepository.updateStatus(email, id);
 		System.out.println("Updated");
 	}
 	
@@ -70,9 +71,55 @@ public class DonorService
 		return (List<Requesting>)requestingBloodRepository.findByRequestermail(email);
 	}
 	
-	public List<Requesting> getRequestByBloodgroup(String bloodgroup) 
+	public List<Requesting> getRequestByBloodgroup(String bloodgroup, String email) 
 	{
-		return (List<Requesting>)requestingBloodRepository.findByBloodgroup(bloodgroup);
+		List<String> groupList = new ArrayList<>();
+		switch(bloodgroup) {
+			case "O-":
+				groupList.add("O+");
+				groupList.add("O-");
+				groupList.add("A+");
+				groupList.add("A-");
+				groupList.add("B+");
+				groupList.add("B-");
+				groupList.add("AB+");
+				groupList.add("AB-");
+				break;
+			case "O+":
+				groupList.add("O+");
+				groupList.add("A+");
+				groupList.add("B+");
+				groupList.add("AB+");
+				break;
+			case "A+":
+				groupList.add("A+");
+				groupList.add("AB+");
+				break;
+			case "A-":
+				groupList.add("A+");
+				groupList.add("A-");
+				groupList.add("AB+");
+				groupList.add("AB-");
+				break;
+			case "B+":
+				groupList.add("B+");
+				groupList.add("AB+");
+				break;
+			case "B-":
+				groupList.add("B+");
+				groupList.add("B-");
+				groupList.add("AB+");
+				groupList.add("AB-");
+				break;
+			case "AB+":
+				groupList.add("AB+");
+				break;
+			case "AB-":
+				groupList.add("AB+");
+				groupList.add("AB-");
+				break;
+		}
+		return (List<Requesting>)requestingBloodRepository.findByBloodgroup(groupList, email);
 	}
 	
 	public List<Donor> getBloodDetails()
